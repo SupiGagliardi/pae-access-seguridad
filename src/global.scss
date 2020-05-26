@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -24,3 +24,265 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+// Default resets and font import
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", Arial, sans-serif;
+}
+
+body {
+    font-size: 1rem;
+    color: #343434;
+}
+
+h1,
+h2,
+p {
+    margin: 0;
+}
+
+/* ------------------------
+ Media queries
+ ------------------------ */
+
+@mixin phone {
+    @media (max-width: 630px) {
+        @content;
+    }
+}
+
+/* ------------------------
+ TYPOGRAPHY, BUTTONS AND INPUTS
+ ------------------------ */
+
+ion-button {
+    text-transform: none;
+    --border-radius: 6px;
+}
+
+.btn {
+    font-weight: 600;
+}
+
+.btn-busqueda {
+    --background: #4a98ff;
+    --padding-start: 0.9em;
+    --padding-end: 0.9em;
+    --padding-top: 1.5em;
+    --padding-bottom: 1.58em;
+    --border-radius: 0px 4px 4px 0;
+    margin-bottom: 0.5em;
+    position: absolute;
+    right: -2.9em;
+    top: 0;
+    --box-shadow: none;
+}
+
+.btn-realizar-evaluacion {
+    padding: 0.9em 0;
+    width: 80%;
+    max-width: 200px;
+    color: #5d5d5d;
+    border: 2px #76b1ff solid;
+    font-weight: 600;
+    font-size: 1rem;
+    background-color: #fcfcfc;
+    border-radius: 6px;
+}
+
+.btn-realizar-evaluacion:hover {
+    outline: none;
+    background-color: #76b1ff;
+    color: #ffff;
+}
+
+.btn-realizar-evaluacion:active {
+    position: relative;
+    top: 1px;
+}
+
+// Search component
+
+.container {
+    text-align: center;
+}
+
+.search-component p {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #9b9b9b;
+}
+
+.search-bar label {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.search-bar input {
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: #343434;
+    outline: none;
+    height: 43px;
+    border-radius: 4px 0 0 4px;
+    border: 1.5px #bebebe solid;
+    padding-left: 0.5em;
+}
+
+.search-bar input::placeholder {
+    font-size: 1.125rem;
+    color: #bebebe;
+}
+
+.search-bar input:hover,
+.search-bar input:focus {
+    border: 1.5px #4a98ff solid;
+}
+
+// No data component
+
+.no-data-component p {
+    font-size: 1rem;
+    color: #9b9b9b;
+}
+
+// Realizar evaluacion component
+
+// .btn-realizar-evaluacion {
+//     width: 200px;
+//     height: 3em;
+//     --border-radius: 4px;
+//     --background: #fcfcfc;
+//     --color: #5d5d5d;
+//     --border-color: #4a98ff;
+//     --border-width: 1.5px;
+//     --border-style: solid;
+
+//     --background-hover: #4a98ff;
+//     --background-hover-opacity: 1;
+//     --background-focused: #4a98ff;
+//     --background-focused-opacity: 1;
+//     --color-focused: #ffff;
+//     --color-hover: #ffff;
+// }
+
+/* ------------------------
+LAYOUT
+ ------------------------ */
+
+* .container {
+    background-color: rgb(241, 241, 241);
+    padding: 2em 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include phone {
+        background-color: red;
+        display: block;
+        padding: 0;
+    }
+}
+
+.logo-pan-axion {
+    margin-bottom: 1.5em;
+    @include phone {
+        display: none;
+    }
+}
+
+.control-panel {
+    min-width: 475px;
+    width: 60%;
+    max-width: 560px;
+    min-height: 75%;
+    background-color: #fcfcfc;
+    border-radius: 7px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border-bottom: 20px solid #5d5d5d;
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.1);
+
+    @include phone {
+        width: 100%;
+        min-width: 0;
+        min-height: 100vh;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 0;
+    }
+}
+
+// Search bar component
+
+.search-component {
+    padding: 0.5em 0 3em 0;
+    margin-bottom: 2em;
+    position: relative;
+}
+
+.search-component::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 80%;
+    background-color: #e2e2e2;
+    transform: translate(-50%);
+    bottom: -0.5em;
+}
+
+.search-component p {
+    margin-bottom: 2.5em;
+}
+
+.search-bar {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-button-container {
+    position: relative;
+    left: -1em;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-bar label {
+    margin-bottom: 1em;
+}
+
+.search-bar div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// No data component
+
+.no-data-component {
+    margin-bottom: 2em;
+    padding: 3em 0;
+}
+
+.no-data-component img {
+    margin-bottom: 1em;
+}
+
+// Realizar evaluacion component
+
+.btn-realizar-evaluacion {
+    margin: 2em 0 3.5em 0;
+}

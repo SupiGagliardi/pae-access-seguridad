@@ -1,20 +1,33 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content
+  ><div class="container">
+    <img
+      class="logo-pan-axion"
+      src="assets/illustrations-logos/logo-pae-axion.svg"
+      alt="Logo de Pan american energy y Axion"
+    />
+    <div class="control-panel">
+      <div class="search-component">
+        <p>Panel de control</p>
+        <div class="search-bar">
+          <label for="code-search">Verificar codigo</label>
+          <div class="search-button-container">
+            <input type="text" id="code-search" placeholder="Ej: F251D" />
+            <ion-button class="btn-busqueda"
+              ><img src="assets/icon/search-icon.svg" alt="Lupa de busqueda"
+            /></ion-button>
+          </div>
+        </div>
+      </div>
+      <div class="no-data-component">
+        <img
+          src="assets/illustrations-logos/no-data.svg"
+          alt="Imagen de formulario vacio"
+        />
+        <p>Ingrese un codigo<br />o realice una evaluacion</p>
+      </div>
+      <div class="realizar-evaluacion-component">
+        <button class="btn-realizar-evaluacion">Realizar evaluacion</button>
+      </div>
+    </div>
   </div>
 </ion-content>
