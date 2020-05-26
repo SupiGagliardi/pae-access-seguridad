@@ -1,5 +1,8 @@
 <ion-content
-  ><div class="container">
+
+  >
+  
+  <div class="container">
     <img
       class="logo-pan-axion"
       src="assets/illustrations-logos/logo-pae-axion.svg"
@@ -18,15 +21,16 @@
           </div>
         </div>
       </div>
-      <div class="no-data-component">
+      <div  *ngIf='1>2' class="no-data-component">
         <img
           src="assets/illustrations-logos/no-data.svg"
           alt="Imagen de formulario vacio"
         />
         <p>Ingrese un codigo<br />o realice una evaluacion</p>
       </div>
+      <app-resultado-codigo></app-resultado-codigo>
       <div class="realizar-evaluacion-component">
-        <button class="btn-realizar-evaluacion">Realizar evaluacion</button>
+        <button ion-button class="btn-realizar-evaluacion">Realizar evaluacion</button>
       </div>
     </div>
   </div>
