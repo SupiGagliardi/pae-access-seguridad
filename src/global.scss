@@ -152,6 +152,28 @@ ion-button {
     color: #9b9b9b;
 }
 
+// Resultado component
+
+.resultado-codigo {
+    color: #343434;
+}
+
+.resultado-mensaje p,
+.resultado-fecha {
+    color: #414141;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.resultado-nombre-usuario {
+    font-size: 1.375rem;
+    font-weight: 400;
+}
+
+.resultado-fecha {
+    color: #4a98ff;
+}
+
 // Realizar evaluacion component
 
 // .btn-realizar-evaluacion {
@@ -279,6 +301,17 @@ LAYOUT
 
 .no-data-component img {
     margin-bottom: 1em;
+}
+
+// Resultado codigo component
+
+.resultado-mensaje {
+    margin-top: 0.5em;
+    margin-bottom: 2em;
+}
+
+.resultado-info-usuario {
+    margin-bottom: 3.5em;
 }
 
 // Realizar evaluacion component
