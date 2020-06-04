@@ -140,6 +140,8 @@ export class EvaluacionPage implements OnInit {
 
   }
   registrarUsuario() {
+    this.evaluacionActiva=true;
+    this.registro=false;
     let condiciones = this.condicionesPrexistentes.filter(condicion => { return condicion.seleccionada == true });
 
     let valorSituacionSalud = condiciones.length *= 0.5
