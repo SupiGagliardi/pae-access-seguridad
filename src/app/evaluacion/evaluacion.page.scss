@@ -1,36 +1,3 @@
-#container {
-    text-align: center;
-  
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  #container strong {
-    font-size: 20px;
-    line-height: 26px;
-  }
-  
-  #container p {
-    font-size: 16px;
-    line-height: 22px;
-  
-    color: #8c8c8c;
-  
-    margin: 0;
-  }
-  
-  #container a {
-    text-decoration: none;
-  }
-  // PEDRO
-// * {
-//   text-align: left;
-// }
-
-// SUKI
 h2,
 h1,
 .evaluacion-respuesta {
@@ -72,6 +39,59 @@ ion-progress-bar {
 
 // LAYOUT
 
+.search-component {
+  margin-bottom: 0;
+}
+
+.search-component::after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 80%;
+  background-color: #e2e2e2;
+  transform: translate(-50%);
+  bottom: 3em;
+}
+
+.search-bar__solo-numeros {
+  margin-top: 0.5em;
+}
+
+// Inputs si no esta registrado
+
+.search-bar--registro-container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 300px;
+}
+
+.search-bar--registro label {
+  margin-bottom: 0.5em;
+  margin-left: 0.4em;
+}
+
+.search-bar--registro input {
+  margin-bottom: 1.5em;
+  width: 100%;
+}
+
+.search-button-container--registro {
+  width: 100%;
+  position: initial;
+}
+
+.search-button-container--registro input {
+  width: 100%;
+  border-radius: 4px;
+}
+
+// Condiciones preexistentes y multiple choice
+
+ion-slide {
+  display: block;
+  width: fit-content;
+}
+
 .container-preguntas-registro {
   position: relative;
   padding: 1.5em 0 2em 0;
@@ -103,7 +123,7 @@ ion-progress-bar {
 .evaluacion-encuesta {
   width: 260px;
   max-width: 350px;
-  margin: 3em auto;
+  margin: 3em auto 0 auto;
 }
 
 .evaluacion-enunciado {
@@ -167,8 +187,13 @@ ion-icon {
   cursor: pointer;
 }
 .evaluacion-respuesta-checkbox {
-    margin-bottom: 1em;
-    display: flex;
-    width: fit-content;
-  }
-  
+  margin-bottom: 1em;
+  display: flex;
+  width: fit-content;
+}
+
+.evaluacion-respuesta-checkbox-container {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
