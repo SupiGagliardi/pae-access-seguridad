@@ -129,6 +129,9 @@ export class EvaluacionPage implements OnInit {
       if (data.dni == null) {
         this.registro = true;
         this.usuarioInexistente = true;
+      } else {
+        this.evaluacionActiva = true;
+
       }
     })
   }
@@ -139,9 +142,9 @@ export class EvaluacionPage implements OnInit {
   registrarUsuario() {
     let condiciones = this.condicionesPrexistentes.filter(condicion => { return condicion.seleccionada == true });
 
-    let valorSituacionSalud = condiciones.length *=0.5
-    this.paeAccessService.crearUsuario(valorSituacionSalud,this.datosUsuario).then(
-      (data)=>{
+    let valorSituacionSalud = condiciones.length *= 0.5
+    this.paeAccessService.crearUsuario(valorSituacionSalud, this.datosUsuario).then(
+      (data) => {
         console.log(data)
       }
     )
