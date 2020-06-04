@@ -1,0 +1,272 @@
+<div class="container">
+  <img *ngIf='numeroPregunta!=0' (click)="preguntaAnterior()" class="evaluacion-back-arrow"
+    src="assets/icon/back-arrow-2.svg" alt="Back arrow" />
+  <div class="container-preguntas-registro">
+    <header *ngIf='evaluacionActiva' class="evaluacion-header">
+      <h2 class="evaluacion-titulo">Registro</h2>
+      <ion-progress-bar class="evaluacion-progress-bar" [value]="progressBarValue"></ion-progress-bar>
+      <p class="evaluacion-question-progress-number">
+        <span>{{ numeroPregunta }}</span>/{{ cantidadPreguntas }}
+      </p>
+    </header>
+
+    <main class="evaluacion-encuesta">
+      <div *ngIf='!evaluacionActiva' class="search-component">
+        <p>Panel de evaluacion</p>
+        <div class="search-bar">
+          <label for="code-search">Ingrese el DNI</label>
+          <div class="search-button-container">
+            <input type="text" [(ngModel)]='numeroDNI' id="code-search" placeholder="Ej: 20XXXXXX" />
+            <ion-button (click)='verificarUsuario()' class="btn-busqueda"><img src="assets/icon/search-icon.svg"
+                alt="Lupa de busqueda" /></ion-button>
+          </div>
+          <p>Ingrese únicamente números, sin puntos</p>
+          <!-- <h4 style='color:#ffc409' *ngIf='usuarioInexistente'> El dni ingresado no existe. Puede registrarlo en la sección inferior.</h4> -->
+        </div>
+      </div>
+      <div *ngIf='evaluacionActiva'>
+        <ion-slides #slider class='swiper-no-swiping'>
+          <ion-slide>
+            <ion-radio-group (ionChange)='radioGroupChange($event)'>
+              <ion-list-header>
+                <ion-label>¿Tuvo fiebre en los últimos 14 días?</ion-label>
+              </ion-list-header>
+
+              <ion-item>
+                <ion-label>Sí</ion-label>
+                <ion-radio slot="start" value=2></ion-radio>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="start" value=0></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-slide>
+          <ion-slide>
+            <ion-radio-group (ionChange)='radioGroupChange($event)'>
+              <ion-list-header>
+                <ion-label>¿Sufrio de tos, dolor de garganta, debilidad, malestar general, falta de aire o perdida del
+                  olfato en los últimos 14 días?</ion-label>
+              </ion-list-header>
+
+              <ion-item>
+                <ion-label>Sí</ion-label>
+                <ion-radio slot="start" value=1></ion-radio>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="start" value=0></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-slide>
+          <ion-slide>
+            <ion-radio-group (ionChange)='radioGroupChange($event)'>
+              <ion-list-header>
+                <ion-label>¿Está tomando medicamentos para síntomas gripales?</ion-label>
+              </ion-list-header>
+
+              <ion-item>
+                <ion-label>Sí</ion-label>
+                <ion-radio slot="start" value=1></ion-radio>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="start" value=0></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-slide>
+          <ion-slide>
+            <ion-radio-group (ionChange)='radioGroupChange($event)'>
+              <ion-list-header>
+                <ion-label>¿Tuvo contacto con personas con síntomas gripales en los últimos 14 días?</ion-label>
+              </ion-list-header>
+
+              <ion-item>
+                <ion-label>Sí</ion-label>
+                <ion-radio slot="start" value=1></ion-radio>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="start" value=0></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-slide>
+          <ion-slide>
+            <ion-radio-group (ionChange)='radioGroupChange($event)'>
+              <ion-list-header>
+                <ion-label>¿Residió fuera del domicilio/país en los 14 días previos al inicio de los sintomas?
+                </ion-label>
+              </ion-list-header>
+
+              <ion-item>
+                <ion-label>Sí</ion-label>
+                <ion-radio slot="start" value=3></ion-radio>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="start" value=0></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-slide>
+          <ion-slide>
+            <ion-radio-group (ionChange)='radioGroupChange($event)'>
+              <ion-list-header>
+                <ion-label>¿Tuvo contacto con personas sospechadas por infección de COVID-19 en los últimos 14 días?
+                </ion-label>
+              </ion-list-header>
+
+              <ion-item>
+                <ion-label>Sí</ion-label>
+                <ion-radio slot="start" value=3></ion-radio>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="start" value=0></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-slide>
+        </ion-slides>
+      </div>
+    </main>
+    <footer class="evaluacion-footer">
+      <div *ngIf='registro'>
+        <ion-slides #slider2 class='swiper-no-swiping'>
+          <ion-slide>
+            <div class="search-bar">
+              <label for="code-search">Nombre</label>
+              <div class="search-button-container">
+                <input type="text" [(ngModel)]='datosUsuario.nombre' id="code-search" />
+              </div>
+              <label for="code-search">Apellido</label>
+              <div class="search-button-container">
+                <input type="text" [(ngModel)]='datosUsuario.apellido' id="code-search" />
+              </div>
+              <label for="code-search">Localidad</label>
+              <div class="search-button-container">
+                <input type="text" [(ngModel)]='datosUsuario.localidad' id="code-search" />
+              </div>
+              <label for="code-search">Sexo</label>
+              <div class="search-button-container">
+                <input type="text" [(ngModel)]='datosUsuario.sexo' id="code-search" placeholder="M o F" />
+              </div>
+              <ion-button (click)='continuarRegistro()'>
+                Continuar
+              </ion-button>
+            </div>
+          </ion-slide>
+          <ion-slide>
+
+            <div class="evaluacion-respuesta-checkbox" *ngFor="let condicionPreexistente of condicionesPrexistentes">
+              <div>
+                <ion-checkbox class="evaluacion-checkbox" slot="start" [(ngModel)]="condicionPreexistente.seleccionada">
+                </ion-checkbox>
+              </div>
+
+              <ion-label class="evaluacion-respuesta">
+                <span [innerHtml]=condicionPreexistente.valor></span>
+
+              </ion-label>
+            </div>
+            <ion-button (click)='registrarUsuario()'></ion-button>
+          </ion-slide>
+
+        </ion-slides>
+      </div>
+      <ion-fab *ngIf='evaluacionActiva' slot="fixed" class="next-btn">
+        <ion-fab-button class="fab-btn" (click)="preguntaSiguiente()">
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </footer>
+
+  </div>
+
+</div>
+
+
+<!-- <div class="evaluacion-enunciado-container">
+  <h1 [ngClass]="pregunta.claseAdicional" class="evaluacion-enunciado">{{pregunta.enunciado}}</h1>
+  Single answer Multiple choices 
+  <ion-list>
+    <div class="evaluacion-respuesta-checkbox" (click)="limpiarRespuestas(respuesta.valor)"
+      *ngFor="let respuesta of pregunta.respuestas">
+      <div>
+        <ion-checkbox class="evaluacion-checkbox" slot="start" (click)="limpiarRespuestas(respuesta.valor)"
+          [(ngModel)]="respuesta.seleccionada"></ion-checkbox>
+      </div>
+
+      <ion-label class="evaluacion-respuesta">
+        <span [innerHtml]=respuesta.valor></span>
+
+      </ion-label>
+    </div>
+
+  </ion-list>
+</div> -->
+
+<!-- <ion-slide>
+  <div class="evaluacion-enunciado-container">
+  <h1 class="evaluacion-enunciado">¿Tuvo fiebre en los últimos 14 días?</h1>
+  <ion-list>
+    <div class="evaluacion-respuesta-checkbox" (click)="limpiarRespuestas(respuesta.valor)"
+      *ngFor="let respuesta of respuestas">
+      <div>
+        <ion-checkbox class="evaluacion-checkbox" slot="start" (click)="limpiarRespuestas(respuesta.valor)"
+          [(ngModel)]="respuesta.seleccionada"></ion-checkbox>
+      </div>
+
+      <ion-label class="evaluacion-respuesta">
+        <span [innerHtml]=respuesta.valor></span>
+
+      </ion-label>
+    </div>
+
+  </ion-list>
+</div>
+</ion-slide>
+<ion-slide>
+  <div class="evaluacion-enunciado-container">
+  <h1 class="evaluacion-enunciado">¿Sufrio de tos, dolor de garganta, debilidad, malestar general, falta de aire o perdida del olfato en los últimos 14 días?</h1>
+  <ion-list>
+    <div class="evaluacion-respuesta-checkbox" (click)="limpiarRespuestas(respuesta.valor)"
+      *ngFor="let respuesta of respuestas">
+      <div>
+        <ion-checkbox class="evaluacion-checkbox" slot="start" (click)="limpiarRespuestas(respuesta.valor)"
+          [(ngModel)]="respuesta.seleccionada"></ion-checkbox>
+      </div>
+
+      <ion-label class="evaluacion-respuesta">
+        <span [innerHtml]=respuesta.valor></span>
+
+      </ion-label>
+    </div>
+
+  </ion-list>
+</div>
+</ion-slide>
+<ion-slide>
+  <div class="evaluacion-enunciado-container">
+  <h1 class="evaluacion-enunciado">¿Está tomando medicamentos para síntomas gripales?</h1>
+  <ion-list>
+    <div class="evaluacion-respuesta-checkbox" (click)="limpiarRespuestas(respuesta.valor)"
+      *ngFor="let respuesta of respuestas">
+      <div>
+        <ion-checkbox class="evaluacion-checkbox" slot="start" (click)="limpiarRespuestas(respuesta.valor)"
+          [(ngModel)]="respuesta.seleccionada"></ion-checkbox>
+      </div>
+
+      <ion-label class="evaluacion-respuesta">
+        <span [innerHtml]=respuesta.valor></span>
+
+      </ion-label>
+    </div>
+
+  </ion-list>
+</div>
+</ion-slide> -->

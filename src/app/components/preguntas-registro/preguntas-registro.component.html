@@ -1,0 +1,110 @@
+<img *ngIf='numeroPregunta!=0' (click)="preguntaAnterior()"
+class="evaluacion-back-arrow"
+src="assets/icon/back-arrow-2.svg"
+alt="Back arrow"
+/>
+<div class="container-preguntas-registro">
+  <header class="evaluacion-header">
+    <h2 class="evaluacion-titulo">Registro</h2>
+    <ion-progress-bar
+      class="evaluacion-progress-bar"
+      [value]="progressBarValue"
+    ></ion-progress-bar>
+    <p class="evaluacion-question-progress-number">
+      <span>{{ numeroPregunta }}</span
+      >/{{ cantidadPreguntas }}
+    </p>
+  </header>
+
+    <main class="evaluacion-encuesta">
+      <ion-slides #slider class='swiper-no-swiping'>
+        <ion-slide *ngFor='let pregunta of preguntas'>
+          <div class="evaluacion-enunciado-container">
+            <h1 [ngClass]="pregunta.claseAdicional" class="evaluacion-enunciado">{{pregunta.enunciado}}</h1>
+            <!-- Single answer Multiple choices -->
+            <ion-list>
+              <div
+                class="evaluacion-respuesta-checkbox"
+                (click)="limpiarRespuestas(respuesta.valor)"
+                *ngFor="let respuesta of pregunta.respuestas"
+              >
+                <div>
+            <ion-checkbox
+                  class="evaluacion-checkbox"
+                  slot="start"
+                  (click)="limpiarRespuestas(respuesta.valor)"
+                  [(ngModel)]="respuesta.seleccionada"
+                ></ion-checkbox>
+                </div>
+
+                <ion-label class="evaluacion-respuesta">
+                  <span [innerHtml]=respuesta.valor></span>
+      
+                </ion-label>
+              </div>
+            
+          </ion-list>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </main>
+  <footer class="evaluacion-footer">
+    <!-- <ion-button
+      [disabled]="botonDisabled"
+      class="btn"
+      (click)="preguntaSiguiente()"
+    >
+      Siguiente
+    </ion-button> -->
+    <!-- <img src="assets/icon/btn-next.svg" alt="Siguiente pregunta" /> -->
+    <ion-fab slot="fixed" class="next-btn">
+      <ion-fab-button
+        class="fab-btn"
+        [disabled]="botonDisabled"
+        (click)="preguntaSiguiente()"
+        ><ion-icon name="chevron-forward-outline"></ion-icon
+      ></ion-fab-button>
+    </ion-fab>
+  </footer>
+
+  <!-- Multiple answer Multiple choices -->
+
+  <!-- <ion-list>
+        <div class="opcion" *ngFor="let respuesta of respuestas">
+          <ion-checkbox class="checkbox"  slot="start"
+          [(ngModel)]="respuesta.seleccionada"></ion-checkbox>
+          <ion-label>{{respuesta.valor}}</ion-label>
+        </div>
+      </ion-list> -->
+
+  <!-- Single answer Multiple choices con Input (Input queda en el mismo renglon) -->
+  <!-- <ion-list>
+        <div class="opcion" (click)="limpiarRespuestas(respuesta.valor)" *ngFor="let respuesta of respuestas">
+          <ion-checkbox class="checkbox"  slot="start"
+          [(ngModel)]="respuesta.seleccionada"></ion-checkbox>
+          <ion-label>{{respuesta.valor}}</ion-label>
+          <br><div *ngIf="respuesta.tieneInput"
+          class="inputOtros">
+          <ion-input type="text" aria-placeholder="EJ:"></ion-input>
+          </div>
+        </div>
+      </ion-list> -->
+
+  <!-- <ion-radio-group class="radio">
+  
+        <ion-item>
+          <ion-label>BS AS</ion-label>
+          <ion-radio class="radio" slot="start" value="biff"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>GSJ</ion-label>
+          <ion-radio slot="start" value="griff"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Campana</ion-label>
+          <ion-radio slot="start" value="buford"></ion-radio>
+        </ion-item>
+      </ion-radio-group> -->
+</div>

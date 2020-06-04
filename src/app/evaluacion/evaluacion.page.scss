@@ -1,0 +1,174 @@
+#container {
+    text-align: center;
+  
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+  
+    color: #8c8c8c;
+  
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+  // PEDRO
+// * {
+//   text-align: left;
+// }
+
+// SUKI
+h2,
+h1,
+.evaluacion-respuesta {
+  color: #343434;
+}
+
+.evaluacion-titulo {
+  font-size: 1.375rem;
+}
+
+.evaluacion-respuesta {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.evaluacion-question-progress-number {
+  font-size: 1.25rem;
+}
+
+.evaluacion-question-progress-number span {
+  font-weight: 600;
+  color: #4a98ff;
+}
+
+.evaluacion-enunciado {
+  font-size: 1.5rem;
+}
+
+.evaluacion-progress-bar {
+  width: 240px;
+  border-radius: 20px;
+  height: 11px;
+}
+
+ion-progress-bar {
+  --background: #eeeeee;
+  --progress-background: #4a98ff;
+}
+
+// LAYOUT
+
+.container-preguntas-registro {
+  position: relative;
+  padding: 1.5em 0 2em 0;
+  min-height: 100vh;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.evaluacion-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.evaluacion-titulo {
+  text-align: center;
+  margin-bottom: 0.4em;
+}
+
+.evaluacion-progress-bar {
+  margin-bottom: 0.4em;
+}
+
+.evaluacion-question-progress-number {
+  text-align: center;
+}
+
+.evaluacion-encuesta {
+  width: 260px;
+  max-width: 350px;
+  margin: 3em auto;
+}
+
+.evaluacion-enunciado {
+  margin-bottom: 1em;
+}
+
+.evaluacion-respuesta-checkbox {
+  margin-bottom: 1em;
+  display: flex;
+  width: fit-content;
+}
+
+.evaluacion-checkbox {
+  margin-right: 0.8em;
+}
+.fontSizeGrande {
+  font-size: 28px;
+}
+
+ion-checkbox {
+  --border-radius: 3px;
+  --border-color: #e2e2e2;
+  --border-width: 2px;
+  --checkmark-width: 2px;
+  --transition: 0.3s;
+  --size: 26px;
+}
+.swiper-slide {
+  text-align: left;
+}
+
+ion-sliders {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+}
+
+.evaluacion-footer {
+  position: relative;
+}
+
+.swiper-slide:not(.swiper-slide-active) > div {
+  display: none;
+}
+
+.next-btn {
+  position: fixed;
+  bottom: 5.5em;
+  right: 3.5em;
+}
+
+ion-icon {
+  font-size: 40px;
+}
+
+.evaluacion-back-arrow {
+  position: absolute;
+  top: 1.8em;
+  left: 1.5em;
+  height: 20px;
+  cursor: pointer;
+}
+.evaluacion-respuesta-checkbox {
+    margin-bottom: 1em;
+    display: flex;
+    width: fit-content;
+  }
+  
